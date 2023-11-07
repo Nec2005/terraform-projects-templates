@@ -10,12 +10,6 @@ locals {
     
   }
 
-  const = {
-    kube_system_ns = "kube-system"
-    all_ips        = ["0.0.0.0/0"]
-    all_ipv6_ips   = ["::/0"]
-  }
-
   default_tags = {
     tf-workspace = terraform.workspace
     env          = local.var.environment
