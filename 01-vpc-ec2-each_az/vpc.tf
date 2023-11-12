@@ -133,7 +133,7 @@ resource "aws_route_table" "public_rt" {
 
 /* Route Table Association to Public and Private Subnets */
 
-resource "aws_route_table_association" "eks_private_rta" {
+resource "aws_route_table_association" "dev_private_rta" {
   count          = contains(local.var.flags, "create_network") ? length(data.aws_availability_zones.current_region.names) : 0
 
   subnet_id      = element(aws_subnet.private.*.id, count.index)
