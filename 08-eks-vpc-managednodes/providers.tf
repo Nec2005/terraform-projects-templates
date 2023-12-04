@@ -20,7 +20,6 @@ terraform {
       version = "~> 2.5.1"
     }
 
-
   }
   backend "s3" {
     # S3 Bucket Configs
