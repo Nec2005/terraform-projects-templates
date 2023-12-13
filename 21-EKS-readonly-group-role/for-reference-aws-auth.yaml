@@ -1,0 +1,37 @@
+apiVersion: v1
+data:
+  mapRoles: |
+    - "groups":
+      - "system:bootstrappers"
+      - "system:nodes"
+      "rolearn": "arn:aws:iam::607709576948:role/exp-dev-eks-nodegroup-role"
+      "username": "system:node:{{EC2PrivateDNSName}}"
+    - "groups":
+      - "system:masters"
+      "rolearn": "arn:aws:iam::607709576948:role/exp-dev-eks-admin-role"    
+      "username": "eks-admin"
+    - "groups":
+      - "eks-readonly-group"
+      "rolearn": "arn:aws:iam::607709576948:role/exp-dev-eks-readonly-role" 
+      "username": "eks-readonly"
+    - "groups":
+      - "eks-developer-group"
+      "rolearn": "arn:aws:iam::607709576948:role/exp-dev-eks-developer-role"
+      "username": "eks-developer"
+  mapUsers: |
+    - "groups":
+      - "system:masters"
+      "userarn": "arn:aws:iam::607709576948:user/exp-dev-eksadmin2"
+      "username": "exp-dev-eksadmin2"
+    - "groups":
+      - "system:masters"
+      "userarn": "arn:aws:iam::607709576948:user/exp-dev-eksadmin1"
+      "username": "exp-dev-eksadmin1"
+immutable: false
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-11-20T20:29:26Z"
+  name: aws-auth
+  namespace: kube-system
+  resourceVersion: "653"
+  uid: ccc922e3-cddc-4cbe-9e8e-15059025e8f0
